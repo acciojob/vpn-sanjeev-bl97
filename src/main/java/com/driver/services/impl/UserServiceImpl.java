@@ -37,14 +37,14 @@ public class UserServiceImpl implements UserService {
 
                 country.setUser(user);
                 user.setOriginalCountry(country);
-                break;
+                user = userRepository3.save(user);
             }
         }
         if(countryName2 == null)
             throw new Exception("Country not found");
 
 
-        return userRepository3.save(user);
+         return user;
 
 
 
