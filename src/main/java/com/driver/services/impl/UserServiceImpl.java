@@ -24,13 +24,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User register(String username, String password, String countryName) throws Exception{
         User user = new User(username,password);
-        user = userRepository3.save(user);
+
         Country country = new Country();
         CountryName countryName2 = null;
 
         for(CountryName countryName1: CountryName.values()){
             if(countryName1.name().equalsIgnoreCase(countryName)){
-                user.setOriginalIp(countryName1.toCode()+"."+user.getId());
+                user.setOriginalIp(countryName1.toCode()+"."+userRepository3.save(user).getId());
                 country.setCountryName(countryName1);
                 country.setCode(countryName1.toCode());
                 countryName2 = countryName1;
