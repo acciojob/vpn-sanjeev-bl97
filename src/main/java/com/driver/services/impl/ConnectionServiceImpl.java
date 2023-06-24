@@ -86,7 +86,9 @@ public class ConnectionServiceImpl implements ConnectionService {
         user.setConnected(false);
         user.setMaskedIp(null);
 
-        return userRepository2.save(user);
+        userRepository2.save(user);
+
+        return user;
     }
     @Override
     public User communicate(int senderId, int receiverId) throws Exception {
